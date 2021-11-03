@@ -9,9 +9,8 @@ if __name__ == '__main__':
   # Encrypt a message
   p = PaddingOracle()
   c = p.encrypt(b"a secret message 1234", verbose=True)
-  #c = p.encrypt(b"1234", verbose=True)
 
-  # Now decrypt that message but *not* using the 'decrypt' method on the cipher text.
+  # Now decrypt that message but not using the 'decrypt' method on the cipher text.
   # This simulates what an attacker could do to decrypt a message.
 
   # Get number of blocks to decrypt.
@@ -89,7 +88,7 @@ if __name__ == '__main__':
         # Handle edge case where we think we got valid 0x01 padding in last
         # byte but it was actually something else.
         if b == 15:
-          # Flip bits of byte b-1 of p_iv and recheck the padding.
+          # Flip last bit of byte b-1 of p_iv and recheck the padding.
           # If the padding is invalid, we knew there was a dependency on the
           # value of the b-1 byte which means our value in byte b was not
           # sufficient to control the padding value of the plain text.

@@ -4,6 +4,16 @@ import os
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import padding
 
+# Example usage:
+#
+# p = PaddingOracle()
+#
+# ct = p.encrypt(b"secret message")
+#
+# msg = p.decrypt(ct)
+#
+# msg = p.decrypt(b'a'*16) # Throws invalid padding bytes
+#
 class PaddingOracle:
 
   def __init__(self):
@@ -52,9 +62,3 @@ class PaddingOracle:
 
     return msg
 
-# Example usage:
-#
-# p = PaddingOracle()
-# ct = p.encrypt(b"secret message")
-# msg = p.decrypt(ct)
-# msg = p.decrypt(b'a'*16) # Throws invalid padding bytes
